@@ -5,7 +5,6 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'
             'v', 'w', 'x', 'y', 'z']
 gameAlphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
                 'v', 'w', 'x', 'y', 'z']
-letterCount = 0
 
 # Load or generate random word
 word = 'coronation street'
@@ -18,15 +17,13 @@ def split(word):
 
 # Function to display the puzzle word
 def displayWord():
-    print()
-    print()
+    print("\n\n")
     for x in puzzleWord:
         if x in gameAlphabet:
             print('-', end='')
         else:
             print(x, end='')
-    print()
-    print()
+    print("\n\n")
 
 
 # Function to check the players guess
