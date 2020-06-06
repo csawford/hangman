@@ -1,3 +1,5 @@
+import random
+
 # Set variables
 turns = 6
 winner = False
@@ -6,8 +8,14 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'
 gameAlphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
                 'v', 'w', 'x', 'y', 'z']
 
-# Load or generate random word
-word = 'coronation street'
+# Generate random word
+wordsTXT = open("words.txt").readlines()
+possiblePuzzles = []
+
+for element in wordsTXT:
+    possiblePuzzles.append(element.strip())
+
+puzzleWord = possiblePuzzles[random.randint(0, len(possiblePuzzles)-1)]
 
 
 # Function to convert a string to a list of chars
@@ -17,22 +25,23 @@ def split(word):
 
 # Function to display the puzzle word
 def displayWord():
-    print("\n\n")
+    print("\n")
     for x in puzzleWord:
         if x in gameAlphabet:
             print('-', end='')
         else:
             print(x, end='')
-    print("\n\n")
+    print("\n")
 
 
 # Function to check the players guess
 def checkGuess(guess):
     global turns
     global winner
+
     # if players guess is a word (more than one letter) check to see if matches puzzleWord
-    if len(guess) > 1:
-        if split(guess) == puzzleWord:
+    if (len(guess) > 1):
+        if guess == puzzleWord:
             winner = True
             return
         else:
@@ -58,7 +67,7 @@ def checkGuess(guess):
         return
 
 
-puzzleWord = split(word)
+#genRndWord()
 while (turns > 0 and winner == False):
     displayWord()
     print('You have ', turns, ' guesses left.')
