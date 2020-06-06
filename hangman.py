@@ -16,11 +16,10 @@ for element in wordsTXT:
     possiblePuzzles.append(element.strip())
 
 puzzleWord = possiblePuzzles[random.randint(0, len(possiblePuzzles)-1)]
+guessWord = list(puzzleWord)
 
-
-# Function to convert a string to a list of chars
-def split(word):
-    return list(word)
+while ' ' in guessWord:
+    guessWord.remove(' ')
 
 
 # Function to display the puzzle word
@@ -59,6 +58,14 @@ def checkGuess(guess):
     if guess in puzzleWord:
         print('correct guess')
         gameAlphabet.remove(guess)
+
+        while guess in guessWord:
+            guessWord.remove(guess)
+            print(guessWord)
+
+        if not guessWord:
+            winner=True
+            displayWord()
         return
     elif guess not in puzzleWord:
         print('That letter is not in the word!')
@@ -67,7 +74,6 @@ def checkGuess(guess):
         return
 
 
-#genRndWord()
 while (turns > 0 and winner == False):
     displayWord()
     print('You have ', turns, ' guesses left.')
