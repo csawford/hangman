@@ -15,7 +15,7 @@ possiblePuzzles = []
 for element in wordsTXT:
     possiblePuzzles.append(element.strip())
 
-puzzleWord = possiblePuzzles[random.randint(0, len(possiblePuzzles)-1)]
+puzzleWord = possiblePuzzles[random.randint(0, len(possiblePuzzles) - 1)]
 guessWord = list(puzzleWord)
 
 while ' ' in guessWord:
@@ -61,10 +61,10 @@ def checkGuess(guess):
 
         while guess in guessWord:
             guessWord.remove(guess)
-            print(guessWord)
+        #    print(guessWord)
 
         if not guessWord:
-            winner=True
+            winner = True
             displayWord()
         return
     elif guess not in puzzleWord:
@@ -86,3 +86,4 @@ if winner == True:
     print('Congratulations, you completed the puzzle!')
 else:
     print('You have run out of turns!')
+    print('The correct answer was ', puzzleWord)
